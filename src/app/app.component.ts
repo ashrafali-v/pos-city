@@ -8,6 +8,12 @@ import {city} from './city.interface'
 export class AppComponent implements OnInit {
   title = 'my-pos';
   cityList:Array<city> = [];
+  showDetails:boolean = false;
+  selectedCity:city = {
+    name: '',
+    count:0,
+    'content:':''
+  };
   ngOnInit(): void {
     this.cityList = [{"name": "Moscow", "count": 12, "content:": "Moscow is the capital city and the most populous federal subject of Russia. The city is a major political, economic, cultural and scientific center in Russia and in Eurasia."}, 
 {"name": "Amsterdam", "count": 25, "content:": "Amsterdam is the capital and most populous city of the Netherlands. Its status as the Dutch capital is mandated by the Constitution of the Netherlands though it is not the seat of the Dutch government, which is at the Hague. "}, 
@@ -18,7 +24,8 @@ export class AppComponent implements OnInit {
 {"name": "Zagreb", "count": 27, "content:": "Zagreb is the capital and the largest city of the Republic of Croatia. It is located in the northwest of the country, along the Sava river, at the southern slopes of the Medvednica mountain."},
 {"name": "Singapore", "count": 30, "content:": "Singapore, officially the Republic of Singapore, is a Southeast Asian sovereign city-state off the southern tip of the Malay Peninsula, 137 kilometers north of the equator."},
 {"name": "Beijing", "count": 14, "content:": "Beijing, sometimes romanized as Peking, is the capital of the People's Republic of China and one of the most populous cities in the world. The population as of 2012 was 20,693,000."},
-{"name": "Paris", "count": 5, "content:": "Paris is the capital and most populous city of France. It is situated on the River Seine, in the north of the country, at the heart of the Îlede-France region."}]
+{"name": "Paris", "count": 5, "content:": "Paris is the capital and most populous city of France. It is situated on the River Seine, in the north of the country, at the heart of the Îlede-France region."},
+]
     //Sort array alphabetically based on name 
     this.cityList = this.cityList.sort((a, b) => {
       const nameA = a.name.toUpperCase();
@@ -33,6 +40,11 @@ export class AppComponent implements OnInit {
       return 0;
     });
 
+  }
+  getCityDetails(city:city){
+    console.log(city);
+    this.selectedCity = city;
+    this.showDetails = true;
   }
   
 }

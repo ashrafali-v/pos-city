@@ -1,5 +1,14 @@
-<ul>
-  <li *ngFor="let city of cityList; index as i;">
-    {{city.name}}
-  </li>
-</ul>
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+
+<div class="columns-3">
+  <div (click)="getCityDetails(city)" *ngFor="let city of cityList; index as i;"
+    class="w-full grid grid-cols-3 gap-4 bg-slate-400 cursor-pointer">
+    {{city.name}}({{city.count}})
+  </div>
+</div>
+<div *ngIf="showDetails">
+  {{this.selectedCity.name}}<br />
+  {{this.selectedCity['content:']}}
+</div>
