@@ -1,14 +1,15 @@
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
-
-<div class="columns-3">
-  <div (click)="getCityDetails(city)" *ngFor="let city of cityList; index as i;"
-    class="w-full grid grid-cols-3 gap-4 bg-slate-400 cursor-pointer">
-    {{city.name}}({{city.count}})
+<div class="container mx-auto pt-3">
+  <header class="justify-between my-5 mx-5">
+    <h2 class="text-lg leading-6 font-medium text-black">Popular destinations</h2>
+  </header>
+  <div class="columns-3 my-5 mx-5 ">
+    <div (click)="getCityDetails(city)" *ngFor="let city of sortedCityList; index as i;"
+      class="w-full grid grid-cols-3 cursor-pointer">
+      {{city.name}}({{city.count}})
+    </div>
   </div>
-</div>
-<div *ngIf="showDetails">
-  {{this.selectedCity.name}}<br />
-  {{this.selectedCity['content:']}}
+  <div *ngIf="showDetails" class="bg-slate-100 justify-between rounded-md px-3 py-2 space-y-3">
+    <h4 class="text-lg leading-tight font-medium text-black">{{this.selectedCity.name}}</h4>
+    {{this.selectedCity['content:']}}
+  </div>
 </div>
